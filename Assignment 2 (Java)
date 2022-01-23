@@ -1,0 +1,175 @@
+package com.company;
+
+public class Shape {
+    private boolean filled;
+    private String color;
+
+    public Shape() {
+        filled = true;
+        color = "green";
+    }
+
+    public Shape(String colorIn, boolean filledIn){
+        filled = filledIn;
+        color = colorIn;
+    }
+
+    public String getColor(){
+        return color;
+    }
+
+    public void setColor(String colorSetIn){
+    color = colorSetIn;
+    }
+     public boolean isFilled(){
+        if (filled == true){
+            return  true;
+        }
+        else{
+            return false;
+         }
+     }
+
+     public void setFilled (boolean filledSetIn){
+         filled = filledSetIn;
+     }
+
+     public String toString(){
+        String isNot = "";
+        if(isFilled()== false){
+            isNot = "not";
+         }
+        return "A Shap with color of" + color + "and is" + isNot + "filled";
+     }
+
+    public class Circle extends Shape {
+        private double radius;
+
+        public Circle() {
+            super();
+            radius = 1.0;
+        }
+
+        public Circle(double radius) {
+            super();
+            this.radius = radius;
+        }
+
+        public Circle(double radius, String color, boolean filled) {
+            super(color, filled);
+            this.radius = radius;
+
+        }
+
+        public double getRadius() {
+            return radius;
+        }
+
+        public void setRadius(double radius) {
+            this.radius = radius;
+        }
+
+        public double getArea() {
+            return radius*radius*Math.PI;
+        }
+
+        public double getPerimeter() {
+            return 2*radius*Math.PI;
+        }
+
+        public String toString() {
+            return "A Circle with radius = " + radius + ", which is a subclass of " + super.toString();
+        }
+    }
+
+    public class Rectangle extends Shape {
+        private double width;
+        private double length;
+
+        public Rectangle() {
+            super();
+            width = 1.0;
+            length = 1.0;
+        }
+
+        public Rectangle(double width, double length) {
+            super();
+            this.width = width;
+            this.length = length;
+        }
+
+        public Rectangle(double width, double length, String color, boolean filled) {
+            super (color, filled);
+            this.width = width;
+            this.length = length;
+
+        }
+
+        public double getWidth() {
+            return width;
+        }
+
+        public void setWidth(double width) {
+            this.width = width;
+        }
+
+        public double getLength() {
+            return length;
+        }
+
+        public void setLength(double length) {
+            this.length = length;
+        }
+
+        public double getArea() {
+            return length*width;
+        }
+
+        public double getPerimeter() {
+            return (2*length)+(2*width);
+        }
+
+        public String toString() {
+            return "A Rectangle with width = " + width + "and length = " + length + ", which is a subclass of " + super.toString();
+        }
+    }
+
+    public class Square extends Rectangle {
+
+        public Square() {
+            super();
+            double side = 1.0;
+        }
+
+        public Square(double side) {
+            super(side, side);
+            side =side;
+        }
+
+        public Square(double side, String color, boolean filled) {
+            super(side, side, color, filled);
+            side =side;
+        }
+
+        public double getSide() {
+            return super.getWidth();
+        }
+
+        public void setSide(double side) {
+            super.setLength(side);
+            super.setWidth(side);
+        }
+
+        public String toString() {
+            return "A Square with side = " + getSide() + ", which is a subclass of " + super.toString();
+        }
+
+        public double getArea() {
+            return getSide()*getSide();
+        }
+
+        public double getPerimeter() {
+            return 4*getSide();
+        }
+    }
+}
